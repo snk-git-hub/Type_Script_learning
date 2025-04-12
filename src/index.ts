@@ -81,3 +81,9 @@ type Users = Record<string,{age:number;name:string}>;
 const users:Users={
     "ras@qd1":{age:21,name:"snk"}
 }
+
+// map
+
+const useers =new Map()
+useers.set("ras@qd1",{name:"Ras",age:30,email:"ras@qdl"})
+useers.set("sara@qdq",{name:"sara",age:32,email:"snk@123"})

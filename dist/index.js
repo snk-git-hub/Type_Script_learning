@@ -27,9 +27,13 @@ updateuser({
 const users = {
     "ras@qd1": { age: 21, name: "snk" }
 };
-// map
 const useers = new Map();
 useers.set("ras@qd1", { name: "Ras", age: 30, email: "ras@qdl" });
 useers.set("sara@qdq", { name: "sara", age: 32, email: "snk@123" });
 const user = useers.get("ras@q1");
 useers.delete("ras@qd1");
+const handleEvent = (event) => {
+    console.log(`handle event ${event}`);
+};
+handleEvent('click'); //work
+// handleEvent("scroll")//error

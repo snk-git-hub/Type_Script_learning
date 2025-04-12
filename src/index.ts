@@ -104,4 +104,5 @@ const handleEvent=(event:ExcludeEvent)=>{
 
 };
 
-handleEvent('click');
+handleEvent('click');//work
+// handleEvent("scroll")//error

@@ -20,7 +20,6 @@
 
 // console.log(age)
 
-////////////////PICK///////////////////////
 interface User{
     id:string;
     name:string;
@@ -28,15 +27,26 @@ interface User{
     email:string;
     password:string;
 };
-
+// PICK: Selects only specific keys from a type.
+// Here, we're picking only 'name', 'age', and 'email' from the User interface.
 type UpdateProps =Pick<User,'name'|'age'|'email'>//PICK
+
+
+
+// PARTIAL: Makes all properties of a type optional.
+// Now 'name', 'age', and 'email' are optional — useful for update functions where not all fields are required.
 type UpdatePropsOptional = Partial<UpdateProps> //PARTIAL
-
-
-
-
 function updateuser(updateProbs:UpdatePropsOptional){
+    // This function can now accept any combination of 'name', 'age', and 'email'.
+    // Good for partial updates without requiring all fields.
 }
 updateuser({
     name:"123"
 })
+//readonly
+//  Prevents reassignment to the properties of the type.
+// Once created, 'name' and 'age' cannot be changed.
+type user={
+    readonly name:string,
+    readonly age:string,
+}

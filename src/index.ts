@@ -50,3 +50,34 @@ type user={
     readonly name:string,
     readonly age:string,
 }
+//same : 
+// const user:Readonly<user>{
+//     name:string,
+//     age:string,
+// }
+
+//RECORD and Maps
+type USER={
+    id:string;
+    username:string;
+}
+type USERS={
+    [key:string]:user;
+}
+// type Users = Record<string,number>;//Record
+type Users = Record<string,{age:number;name:string}>;
+// const users={
+//     "ras@qd1":{
+//         id:'ras@qd1',
+//         username:'harkirat',
+//     },
+//     "ras@":{
+//         id:'ras@',
+//         username:'harkirat',
+//     }
+
+// }
+
+const users:Users={
+    "ras@qd1":{age:21,name:"snk"}
+}

@@ -29,6 +29,14 @@ interface User{
     password:string;
 };
 
-type UpdateProps =Pick<User,'name'|'age'|'email'>
-function updateuser(updateProbs:UpdateProps){
+type UpdateProps =Pick<User,'name'|'age'|'email'>//PICK
+type UpdatePropsOptional = Partial<UpdateProps> //PARTIAL
+
+
+
+
+function updateuser(updateProbs:UpdatePropsOptional){
 }
+updateuser({
+    name:"123"
+})

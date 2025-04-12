@@ -83,10 +83,25 @@ const users:Users={
 }
 
 // map
+type user1={
+    name:string;
+    age:number;
+    email:string;
+}
 
-const useers =new Map()
+const useers =new Map<string,user1>()
 useers.set("ras@qd1",{name:"Ras",age:30,email:"ras@qdl"})
 useers.set("sara@qdq",{name:"sara",age:32,email:"snk@123"})
 
 const user = useers.get("ras@q1")
 useers.delete("ras@qd1")
+//exclude
+type EventType="click"|"scroll"|"mousemove";
+type ExcludeEvent=Exclude<EventType,'scroll'>;
+
+const handleEvent=(event:ExcludeEvent)=>{
+    console.log(`handle event ${event}`);
+
+};
+
+handleEvent('click');

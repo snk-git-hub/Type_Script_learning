@@ -2,33 +2,26 @@ import { z } from 'zod';
 import express from "express";
 
 const app = express();
-app.use(express.json()); // Add this to parse JSON bodies
 
 // Define the schema for profile update
 const userProfileSchema = z.object({
-    name: z.string().min(1, { message: "Name cannot be empty" }),
-    email: z.string().email({ message: "Invalid email format" }),
-    age: z.number().min(18).optional(),
+  name: z.string().min(1, { message: "Name cannot be empty" }),
+  email: z.string().email({ message: "Invalid email format" }),
+  age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
 });
-
-// Infer TypeScript type from Zod schema
-type UserProfile = z.infer<typeof userProfileSchema>;
 
 app.put("/user", (req, res) => {
-    const result = userProfileSchema.safeParse(req.body);
-    const updateBody: UserProfile = req.body; // Type assigned using inferred type
+  const { success } = userProfileSchema.safeParse(req.body);
+  const updateBody = req.body; // how to assign a type to updateBody?
 
-    if (!result.success) {
-        res.status(411).json({ error: result.error });
-        return;
-    }
-    
-    // update database here
-    res.json({
-        message: "User updated"
-    });
+  if (!success) {
+    res.status(411).json({});
+    return
+  }
+  // update database here
+  res.json({
+    message: "User updated"
+  })
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+app.listen(3000);
